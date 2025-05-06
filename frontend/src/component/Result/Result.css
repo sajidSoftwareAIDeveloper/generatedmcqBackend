@@ -1,0 +1,37 @@
+
+.score-board{
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+    padding: 10px;
+    height: auto;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+
+.wrong-option{
+    background-color: rgb(255, 79, 79);
+    border-radius: 8px;
+    font-size: 19px;
+    padding: 4px;;
+}
+
+.explain{
+    padding: 5px;
+    font-size: 20px;
+}
+.result-option{
+    background-color: rgb(100, 149, 157);
+    border-radius: 8px;
+    font-size: 19px;
+    padding: 4px;
+}
+
+.selected-option{
+    background-color: rgb(74, 255, 171);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 19px;
+    padding: 4px;;
+}
