@@ -27,6 +27,7 @@ from docx import Document
 pytesseract.pytesseract.tesseract_cmd = r"C:\Users\sajid.anwar\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
 def image_to_text(file):
+    # print('welcome to file')
     image = Image.open(file)
     text = pytesseract.image_to_string(image ,lang='eng')
     return text
@@ -58,6 +59,8 @@ def docx_to_text(file):
 
 def uploadFile(file):
     file_type = file.content_type
+    # print('>>>>',file_type,file)
+    
     if "pdf" in file_type:
         # print('pdf')
         return pdf_to_text(file)

@@ -22,6 +22,7 @@ export const Question=()=>{
     useEffect(()=>{
         // console.log(JSON.parse(localStorage.getItem('data')));
         setData( JSON.parse(localStorage.getItem('data')));
+        // console.log(data.questions[0].length);
     },[]);
 
     
@@ -70,55 +71,64 @@ export const Question=()=>{
         }
 
     }
-    return(
-        <div className='question-main'>
-           
-            
-            {
-                data.questions.length===0
-                &&
-                <div className='not-found'>data not availabel</div>
-            }
+    return (
+      <div className="question-main">
+        {data.questions[0].length === 0 ? (
+          <div className="not-found">data not availabel</div>
+        ) : (
+          <div>
+            {isValid && (
+              <div className="message">
+                <h1 className="smassageValue">please complete all questions</h1>
+              </div>
+            )}
 
-            {
-                isValid &&
-                <div className="message">
-                     <h1 className='smassageValue'>please complete all questions</h1>
-                </div>
-            }
-            {
-                data.questions.lenght!==0
-                &&
-                data.questions.map((items,indexs)=>(
-                    items.map((item,index)=>(
-                        <div className='questions' key={indexs+""+index}>
-                            <div className='question'>{(index+1+((items.length)*indexs))}. {item}</div>
-                            <div className='options'>
-                                {
-                                    data.options[indexs][index].map((i,idx)=>(
-                                        <div 
-                                        className={
-                                            selectedAnswer.find(item => item[0] === indexs && item[1] === index && item[2] === idx ) 
-                                            ?'select-option':'option'
-                                            }
-                                        onClick={()=>selectedAnswerHandle([indexs,index,idx,i===data.answers[indexs][index]?1:0])} 
-                                        key={indexs+""+index+""+idx}>{i}
-                                        </div>
-                                     ))
-                                }
-                            </div> 
+            {data.questions.lenght !== 0 &&
+              data.questions.map((items, indexs) =>
+                items.map((item, index) => (
+                  <div className="questions" key={indexs + "" + index}>
+                    <div className="question">
+                        <div>{index + 1 + items.length * indexs}. </div>
+                        <div> {item}</div>
+                      {/* {index + 1 + items.length * indexs}. {item} */}
+                    </div>
+                    <div className="options">
+                      {data.options[indexs][index].map((i, idx) => (
+                        <div
+                          className={
+                            selectedAnswer.find(
+                              (item) =>
+                                item[0] === indexs &&
+                                item[1] === index &&
+                                item[2] === idx
+                            )
+                              ? "select-option"
+                              : "option"
+                          }
+                          onClick={() =>
+                            selectedAnswerHandle([
+                              indexs,
+                              index,
+                              idx,
+                              i === data.answers[indexs][index] ? 1 : 0,
+                            ])
+                          }
+                          key={indexs + "" + index + "" + idx}
+                        >
+                          {i}
                         </div>
-                    ))
+                      ))}
+                    </div>
+                  </div>
                 ))
-            }
-            {
-               data.questions.lenght!==0
-               &&
-                <div className='file-submit'>
-                     <button className='submit-button' onClick={questionSubmitHandle}>submit</button>
-                </div>
-            }
-
-        </div>
-    )
+              )}
+            <div className="file-submit">
+              <button className="submit-button" onClick={questionSubmitHandle}>
+                submit
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
 }

@@ -21,14 +21,14 @@ body{
 }
 
 
-.submit-button{
+/* .submit-button{
   background-color: rgb(255, 172, 243);
   padding: 5px;
   padding-inline: 20px;
   border-radius: 10px;
   cursor: pointer;
 
-}
+} */
 
 .message{
   padding: 10px;
@@ -50,4 +50,41 @@ body{
 .not-found{
   color: red;
   font-size: 30px;
+}
+
+.submit-button {
+  margin: 5px;
+  font-size: 30px;
+  border-radius: 30px;
+  background-color: rgb(252, 178, 244);
+  padding-inline: 20px;
+  cursor: pointer;
+  margin-left: 30px;
+
+  background: linear-gradient(
+  180deg,
+  red 0%,
+  blue 25%,
+  green 50%,
+  orange 75%,
+  red 100%
+);
+background-size: 100% 300%;
+animation: moveBorder 4s infinite linear;
+}
+.submit-button:hover {
+  background-color: red;
+}
+.submit-button:active {
+  background-color: aqua;
+}
+
+
+@keyframes moveBorder {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
 }

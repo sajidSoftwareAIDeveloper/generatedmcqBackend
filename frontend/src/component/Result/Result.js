@@ -32,66 +32,70 @@ export const Result=()=>{
 
     
 
-    return(
-        <div className='question-main'>    
-
-            <div className='score-board'>
-                <div>score</div>
-                <div>{scores.score}/{scores.total}</div>
-                <div> {(scores.score / scores.total * 100).toFixed(2)}%</div>
+    return (
+      <div className="question-main">
+        {data.questions[0].length === 0 ? (
+          <div className="not-found">data not availabel</div>
+        ) : (
+          <div>
+            <div className="score-board">
+              <div>score</div>
+              <div>
+                {scores.score}/{scores.total}
+              </div>
+              <div> {((scores.score / scores.total) * 100).toFixed(2)}%</div>
             </div>
- 
-            {
-                data.questions.length===0
-                &&
-                <div className='not-found'>data not availabel</div>
-            }
-
-            {
-                data.questions.lenght!==0
-                &&
-                data.questions.map((items,indexs)=>(
-                    
-                    data.questions[indexs].map((item,index)=>(
-                        <div className='questions' key={indexs+""+index}>
-                            <div className='question'>{(index+1+((items.length)*indexs))}. {item}</div>
-                            <div className='options'>
-                                {
-                                    data.options[indexs][index].map((i,idx)=>(
-                                        <div 
-                                         className={
-                                            selectedAnswer.find(item => item[0] === indexs && item[1] === index && item[2] === idx) 
-                                            || data.answers[indexs][index]===data.options[indexs][index][idx]
-                                            ?
-                                            data.answers[indexs][index]===data.options[indexs][index][idx]
-                                               ?
-                                                'selected-option'
-                                               :
-                                                'wrong-option'
-                                            :'result-option'
-                                            }
-                                            key={indexs+""+index+""+idx}>{i}
-                                         </div>
-                                    ))
-                                }
-                            </div> 
-                            
-                            <div className='explain'>
-                                Explain : {data.explanations[indexs][index]}
-                            </div>
-    
+            {data.questions.lenght !== 0 &&
+              data.questions.map((items, indexs) =>
+                data.questions[indexs].map((item, index) => (
+                  <div className="questions" key={indexs + "" + index}>
+                    <div className="question">
+                        <div>{index + 1 + items.length * indexs}.</div>
+                        <div> {item}</div>
+                    </div>
+                    <div className="options">
+                      {data.options[indexs][index].map((i, idx) => (
+                        <div
+                          className={
+                            selectedAnswer.find(
+                              (item) =>
+                                item[0] === indexs &&
+                                item[1] === index &&
+                                item[2] === idx
+                            ) ||
+                            data.answers[indexs][index] ===
+                              data.options[indexs][index][idx]
+                              ? data.answers[indexs][index] ===
+                                data.options[indexs][index][idx]
+                                ? "selected-option"
+                                : "wrong-option"
+                              : "result-option"
+                          }
+                          key={indexs + "" + index + "" + idx}
+                        >
+                          {i}
                         </div>
-                    ))
-                ))
-            }
-            {
-               data.questions.lenght!==0
-               &&
-                <div className='file-submit'>
-                     <button className='submit-button' onClick={()=>{navigate('/')}}>home</button>
-                </div>
-            }
+                      ))}
+                    </div>
 
-        </div>
-    )
+                    <div className="explain">
+                      Explain : {data.explanations[indexs][index]}
+                    </div>
+                  </div>
+                ))
+              )}
+            <div className="file-submit">
+              <button
+                className="submit-button"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                home
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
 }

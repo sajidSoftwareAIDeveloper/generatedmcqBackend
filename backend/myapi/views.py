@@ -17,9 +17,10 @@ def postMethod(request):
     file = request.FILES.get('file')
     data = request.data.get("text", "")  # default to empty string if not provided
 
-    if file:
+    if file:  
         text = uploadFile(file)
         if text!="":
+            # print(text)
             output = call_for_output(text)
             return Response({"message": output}, status=200)
         else:
