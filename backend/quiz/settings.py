@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-x7l_65zqobo$s3s-f*1zz68%5ml&b50f*2&la87s^en^)567+3
 DEBUG = False # True
 
 
-ALLOWED_HOSTS = ['generatedmcqBackend.onrender.com', 'http://localhost:3000/']
+ALLOWED_HOSTS = ['generatedmcqBackend.onrender.com', 'localhost']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",    
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +60,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'quiz.urls'
 CORS_ALLOWED_ORIGINS = [
   "http://localhost:3000",
+  "https://generatedmcqfrontend.onrender.com",  # if applicable
 ]
 
 TEMPLATES = [
