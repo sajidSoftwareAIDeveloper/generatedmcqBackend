@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x7l_65zqobo$s3s-f*1zz68%5ml&b50f*2&la87s^en^)567+3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['generatedmcqBackend.onrender.com', 'http://localhost:3000/']
 
 
 # Application definition
@@ -128,4 +129,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
