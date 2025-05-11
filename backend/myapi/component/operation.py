@@ -15,7 +15,7 @@
 # shutil.rmtree("C:/Users/sajid.anwar/.cache/huggingface/hub/models--valhalla--t5-base-qg-hl")
 
 
-import spacy
+# import spacy
 # from transformers import AutoTokenizer, AutoModelForSeq2SeqLM    # fast tokenize
 from transformers import T5Tokenizer, T5ForConditionalGeneration   # slow tokenoze   #  pip install sentencepiece
 import random
