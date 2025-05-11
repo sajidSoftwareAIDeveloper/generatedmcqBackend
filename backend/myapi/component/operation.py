@@ -35,7 +35,7 @@ model = T5ForConditionalGeneration.from_pretrained(model_name)
 
 
 def call_for_output(text):
-
+    import spacy
     new_paragraph=[]
     questions=[]
     answers=[]
